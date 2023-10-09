@@ -43,6 +43,7 @@ import java.util.concurrent.CountDownLatch;
 
 @State(Scope.Thread)
 public class ApnsClientBenchmark {
+    private static Random random = new Random();
 
     private NioEventLoopGroup clientEventLoopGroup;
     private NioEventLoopGroup serverEventLoopGroup;
@@ -145,7 +146,7 @@ public class ApnsClientBenchmark {
 
     private static String generateRandomDeviceToken() {
         final byte[] tokenBytes = new byte[TOKEN_LENGTH];
-        new Random().nextBytes(tokenBytes);
+        random.nextBytes(tokenBytes);
 
         final StringBuilder builder = new StringBuilder(TOKEN_LENGTH * 2);
 
